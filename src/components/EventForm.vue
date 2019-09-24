@@ -1,5 +1,5 @@
 <template>
-    <form >
+    <form @submit.prevent="handleSubmit">
         <div class="input-holder">
             <input type="text" placeholder="Event title" v-model="event.title" />
         </div>

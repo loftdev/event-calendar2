@@ -5,7 +5,7 @@
         <calendar />
       </div>
       <div class="event-holder">
-
+        <event-form />
       </div>
     </div>
   </div>
@@ -17,7 +17,8 @@ import EventForm from "./components/EventForm"
 export default {
   name: 'app',
   components: {
-    Calendar
+    Calendar,
+    EventForm
   }
 }
 </script>

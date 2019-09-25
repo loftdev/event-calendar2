@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="handleSubmit">
+    <form >
         <div class="input-holder">
             <input type="text" placeholder="Event title" v-model="event.title" />
         </div>
@@ -10,13 +10,13 @@
             <date-picker :placeholder="'End date'" v-model="event.end"/>
         </div>
         <div class="input-holder">
-            <textarea placeholder="Event description" rows="4" v-model="event.data.description" ></textarea>
+            <textarea placeholder="Event description" rows="4" v-model="event.description" ></textarea>
         </div>
         <div class="input-holder">
             <color-picker @colorPicked="selectColor" :color="event.cssClass" />
         </div>
         <div class="input-holder">
-            <button type="submit">Schedule</button>
+            <button @click="handleSubmit">Schedule</button>
         </div>
     </form>
 </template>
@@ -41,9 +41,13 @@ export default {
         }
     },
     methods: {
-        async handleSubmit() {
+        handleSubmit() {
             const start = format(this.event.start, 'YYYY-MM-DD');
             const end = format(this.event.end, 'YYYY-MM-DD');
+            this.event.start = start
+            this.event.end = end
+            print(this.event)
+            this.$emit("eventAdded", this.event)
         }
     },
     components: {

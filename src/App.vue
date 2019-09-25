@@ -2,10 +2,10 @@
   <div id="app">
     <div class="main">
       <div class="clendar-holder">
-        <calendar />
+        <calendar :event="event" />
       </div>
       <div class="event-holder">
-        <event-form />
+        <event-form @eventAdded="event = $event" />
       </div>
     </div>
   </div>
@@ -16,6 +16,11 @@ import Calendar from "./components/Calendar"
 import EventForm from "./components/EventForm"
 export default {
   name: 'app',
+  data() {
+    return {
+      event: []
+    }
+  },
   components: {
     Calendar,
     EventForm

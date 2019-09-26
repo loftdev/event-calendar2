@@ -10,14 +10,18 @@
             <date-picker :placeholder="'End date'" v-model="event.end"/>
         </div>
         <div class="input-holder">
-            <textarea placeholder="Event description" rows="4" v-model="event.description" ></textarea>
+            <textarea placeholder="Event description" rows="4" v-model="event.data.description" ></textarea>
         </div>
         <div class="input-holder">
             <color-picker @colorPicked="selectColor" :color="event.cssClass" />
         </div>
         <div class="input-holder">
-            <button @click="handleSubmit">Schedule</button>
+            <button @click.prevent="handleSubmit">Schedule</button>
         </div>
+
+        <!-- Test the input data -->
+        <p>{{ event }}</p>
+
     </form>
 </template>
 
@@ -42,12 +46,12 @@ export default {
     },
     methods: {
         handleSubmit() {
-            const start = format(this.event.start, 'YYYY-MM-DD');
-            const end = format(this.event.end, 'YYYY-MM-DD');
-            this.event.start = start
-            this.event.end = end
-            print(this.event)
+            this.event.start = format(this.event.start, 'YYYY-MM-DD');
+            this.event.end = format(this.event.end, 'YYYY-MM-DD');
             this.$emit("eventAdded", this.event)
+
+            // test if method is functioning
+            this.event.title = 'method is working'
         }
     },
     components: {

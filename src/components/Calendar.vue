@@ -1,12 +1,12 @@
 <template>
-    <full-calendar :events="event" />
+    <full-calendar :events="events" />
 </template>
 
 <script>
 import FullCalendar from 'vue-fullcalendar';
 export default {
     name: 'Calendar',
-    props: ['event'],
+    props: ['events'],
     components: {
         FullCalendar
     },

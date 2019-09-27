@@ -16,7 +16,7 @@
             <color-picker @colorPicked="selectColor" :color="event.cssClass" />
         </div>
         <div class="input-holder">
-            <button @click.prevent="handleSubmit">Schedule</button>
+            <button type="button" @click.prevent="handleSubmit">Schedule</button>
         </div>
 
         <!-- Test the input data -->
@@ -45,13 +45,10 @@ export default {
         }
     },
     methods: {
-        handleSubmit() {
-            this.event.start = format(this.event.start, 'YYYY-MM-DD');
-            this.event.end = format(this.event.end, 'YYYY-MM-DD');
+        handleSubmit () {
+            this.event.start = format(this.event.start, 'yyyy-mm-dd');
+            this.event.end = format(this.event.end, 'yyyy-mm-dd');
             this.$emit("eventAdded", this.event)
-
-            // test if method is functioning
-            this.event.title = 'method is working'
         }
     },
     components: {

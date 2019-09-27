@@ -6,10 +6,12 @@
 
         <!-- Test events data if it is change -->
         <p>{{ events }}</p>
-        
+
       </div>
       <div class="event-holder">
-        <event-form @eventAdded="events.push($event)" />
+        <event-form 
+          @eventAdded="addEvent" 
+           />
       </div>
     </div>
   </div>
@@ -23,17 +25,14 @@ export default {
   data(){
     return {
       events: [{
-        title: 'event1',
-        start: '2019-09-27',
-        cssClass: 'blue',
-        YOUR_DATA: {}
-        },
-        {
-        title: 'event2',
-        start: '2019-09-28',
-        end: '2019-09-30',
-        cssClass  : ['orange']
-      }] 
+                title: 'test',
+                start: '2019-09-27',
+                end: '2019-09-28',
+                cssClass: '',
+                data: {
+                    description: 'test only'
+                }
+            }] 
     }
   },
   components: {
